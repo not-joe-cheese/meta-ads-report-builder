@@ -114,6 +114,10 @@ export async function generatePDF(
   const createdTextWidth = doc.getTextWidth(createdText)
   doc.text(createdText, pageWidth - 15 - createdTextWidth, 27)
 
+  const monthInProgressText = "Month in progress. Date as of today."
+  const monthInProgressWidth = doc.getTextWidth(monthInProgressText)
+  doc.text(monthInProgressText, pageWidth - 15 - monthInProgressWidth, 31)
+
   // Load and add Thryv logo above Meta badge
   const thryvLogoUrl = "/images/thryvlogo.png"
   try {

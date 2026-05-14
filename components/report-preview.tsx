@@ -73,11 +73,14 @@ export function ReportPreview({ account, adType = "traffic" }: ReportPreviewProp
             <Image src="/images/thryv-logo.png" alt="Thryv" width={80} height={24} className="object-contain" />
           </div>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between">
           <p className="text-sm text-muted-foreground">
             Date range {formatDateForDisplay(dateRange.start)} to {formatDateForDisplay(dateRange.end)}
           </p>
-          <p className="text-xs text-muted-foreground">Created on {new Date().toLocaleDateString()}</p>
+          <div className="flex flex-col items-end">
+            <p className="text-xs text-muted-foreground">Created on {new Date().toLocaleDateString()}</p>
+            <p className="text-xs text-muted-foreground">Month in progress. Date as of today.</p>
+          </div>
         </div>
       </div>
 
