@@ -2,6 +2,7 @@ import { type ProcessedAdAccount, formatNumber, formatPercentage, formatDateForD
 import { jsPDF } from "jspdf"
 import autoTable from "jspdf-autotable"
 import { loadImage as loadImageHelper } from "./load-image-helper" // Import loadImage helper function
+import { assetPath } from "./utils"
 import JSZip from "jszip"
 
 // Extend jsPDF type to include autoTable
@@ -74,7 +75,7 @@ export async function generatePDF(
   // Calculate the width of the client name to position Meta logo right next to it
   const nameWidth = doc.getTextWidth(cleanAccountName)
 
-  const logoUrl = adType === "linkedin-traffic" ? "/images/linkedin-logo.png" : "/images/meta-logo.svg"
+  const logoUrl = assetPath(adType === "linkedin-traffic" ? "/images/linkedin-logo.png" : "/images/meta-logo.svg")
   const logoType = "PNG" // Convert SVG to PNG for smaller size
 
   try {
@@ -119,7 +120,7 @@ export async function generatePDF(
   doc.text(monthInProgressText, pageWidth - 15 - monthInProgressWidth, 31)
 
   // Load and add Thryv logo above Meta badge
-  const thryvLogoUrl = "/images/thryvlogo.png"
+  const thryvLogoUrl = assetPath("/images/thryvlogo.png")
   try {
     const thryvLogoImg = await loadImageHelper(thryvLogoUrl, 200, 80, 0.85) // Max 200px wide, 80px tall, 85% quality
     // Create a temporary image to get natural dimensions

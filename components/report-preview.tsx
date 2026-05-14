@@ -16,6 +16,7 @@ import {
 } from "recharts"
 import { TrendingUp, Users, MousePointerClick, Eye, UserCheck } from "lucide-react"
 import Image from "next/image"
+import { assetPath } from "@/lib/utils"
 
 interface ReportPreviewProps {
   account: ProcessedAdAccount
@@ -51,7 +52,7 @@ export function ReportPreview({ account, adType = "traffic" }: ReportPreviewProp
               <h2 className="text-2xl font-bold text-foreground">{cleanAccountName}</h2>
               {adType === "linkedin-traffic" ? (
                 <Image
-                  src="/images/linkedin-logo.png"
+                  src={assetPath("/images/linkedin-logo.png")}
                   alt="LinkedIn"
                   width={60}
                   height={20}
@@ -59,7 +60,7 @@ export function ReportPreview({ account, adType = "traffic" }: ReportPreviewProp
                 />
               ) : (
                 <Image
-                  src="/images/meta-logo.svg"
+                  src={assetPath("/images/meta-logo.svg")}
                   alt="Meta"
                   width={40}
                   height={20}
@@ -70,7 +71,7 @@ export function ReportPreview({ account, adType = "traffic" }: ReportPreviewProp
             <p className="text-base text-muted-foreground ml-0">{campaignName}</p>
           </div>
           <div className="flex flex-col items-end gap-1">
-            <Image src="/images/thryv-logo.png" alt="Thryv" width={80} height={24} className="object-contain" />
+            <Image src={assetPath("/images/thryv-logo.png")} alt="Thryv" width={80} height={24} className="object-contain" />
           </div>
         </div>
         <div className="flex items-start justify-between">

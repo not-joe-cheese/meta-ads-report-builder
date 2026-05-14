@@ -2,6 +2,9 @@
 const nextConfig = {
   output: 'export',
   basePath: process.env.NEXT_BASE_PATH ?? '',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: process.env.NEXT_BASE_PATH ?? '',
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
