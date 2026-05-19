@@ -36,35 +36,12 @@ export async function generatePDF(
 
   // Header background
   doc.setFillColor(...COLORS.cardBg)
-  doc.rect(0, 0, pageWidth, 41, "F")
+  doc.rect(0, 0, pageWidth, 33, "F")
 
-  // Feedback CTA section
-  const feedbackUrl = "https://calendly.com/d/cvjz-c2v-r39/thryv-social-ads-customer-feedback"
-  doc.setFontSize(8)
-  doc.setFont("helvetica", "bold")
-  doc.setTextColor(...COLORS.text)
-  const feedbackHeadline = "Got 30 minutes? Talk Social Ads with us.    "
-  doc.text(feedbackHeadline, 15, 33)
-  const headlineWidth = doc.getTextWidth(feedbackHeadline)
-  
-  // Add underlined hyperlink
-  doc.setTextColor(...COLORS.accent)
-  const linkText = "Schedule your feedback session."
-  doc.textWithLink(linkText, 15 + headlineWidth, 33, { url: feedbackUrl })
-  const linkWidth = doc.getTextWidth(linkText)
-  doc.setDrawColor(...COLORS.accent)
-  doc.setLineWidth(0.3)
-  doc.line(15 + headlineWidth, 33.5, 15 + headlineWidth + linkWidth, 33.5)
-  
-  doc.setFontSize(7)
-  doc.setFont("helvetica", "normal")
-  doc.setTextColor(...COLORS.textLight)
-  doc.text("Share your experience in a 30-min interview, selected participants receive $75 for their time.", 15, 37)
-  
   // Header border bottom
   doc.setDrawColor(...COLORS.border)
   doc.setLineWidth(0.5)
-  doc.line(0, 41, pageWidth, 41)
+  doc.line(0, 33, pageWidth, 33)
 
   // Account name
   doc.setTextColor(...COLORS.text)
@@ -140,7 +117,7 @@ export async function generatePDF(
     console.error("Failed to load Thryv logo:", error)
   }
 
-  yPosition = 45
+  yPosition = 37
 
   if (adType === "linkedin-traffic") {
     // LinkedIn layout: 3 hero widgets across
