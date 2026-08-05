@@ -36,12 +36,38 @@ export async function generatePDF(
 
   // Header background
   doc.setFillColor(...COLORS.cardBg)
-  doc.rect(0, 0, pageWidth, 33, "F")
+  doc.rect(0, 0, pageWidth, 38, "F")
+
+  // TikTok pilot CTA
+  const tiktokMailto =
+    "mailto:Krystal.Zimmerman@thryv.com" +
+    `?subject=${encodeURIComponent("Interested in TikTok Pilot")}` +
+    `&body=${encodeURIComponent("Hello Thryv team!\r\n\r\nI'm interested in joining the TikTok Ads Pilot.\r\n\r\nThank you!")}`
+  doc.setFontSize(8)
+  doc.setFont("helvetica", "bold")
+  doc.setTextColor(...COLORS.text)
+  // Row 1
+  const tiktokLine1 = "Interested in TikTok Ads? We may be adding it to Thryv Social Ads!"
+  doc.text(tiktokLine1, 15, 31)
+
+  // Row 2
+  const tiktokLine2 = "Early participants get a discounted pilot rate. "
+  doc.text(tiktokLine2, 15, 36)
+  const tiktokLine2Width = doc.getTextWidth(tiktokLine2)
+
+  // Add underlined hyperlink on row 2
+  doc.setTextColor(...COLORS.accent)
+  const tiktokLinkText = "Click here to let us know."
+  doc.textWithLink(tiktokLinkText, 15 + tiktokLine2Width, 36, { url: tiktokMailto })
+  const tiktokLinkWidth = doc.getTextWidth(tiktokLinkText)
+  doc.setDrawColor(...COLORS.accent)
+  doc.setLineWidth(0.3)
+  doc.line(15 + tiktokLine2Width, 36.5, 15 + tiktokLine2Width + tiktokLinkWidth, 36.5)
 
   // Header border bottom
   doc.setDrawColor(...COLORS.border)
   doc.setLineWidth(0.5)
-  doc.line(0, 33, pageWidth, 33)
+  doc.line(0, 38, pageWidth, 38)
 
   // Account name
   doc.setTextColor(...COLORS.text)
@@ -117,7 +143,7 @@ export async function generatePDF(
     console.error("Failed to load Thryv logo:", error)
   }
 
-  yPosition = 37
+  yPosition = 42
 
   if (adType === "linkedin-traffic") {
     // LinkedIn layout: 3 hero widgets across
